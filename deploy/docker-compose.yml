@@ -1,0 +1,35 @@
+name: arden
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: arden
+      POSTGRES_PASSWORD: arden
+      POSTGRES_DB: arden
+    ports:
+      - "5432:5432"
+    volumes:
+      - arden-pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U arden -d arden"]
+      interval: 2s
+      timeout: 5s
+      retries: 20
+
+  api:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    environment:
+      DATABASE_URL: postgres://arden:arden@postgres:5432/arden?sslmode=disable
+      ADDR: ":8080"
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    entrypoint: ["sh", "-c", "arden migrate up && arden api"]
+
+volumes:
+  arden-pg:
