@@ -2,7 +2,7 @@
 
 Distributed job scheduler and execution engine. Postgres is the source of truth and the coordination mechanism: jobs are claimed with row locks, owned with a lease, and protected with a fencing token.
 
-**Week 1** is the job API. It submits, reads, lists, and cancels work. It does not run jobs. Delivery, once workers exist, is at-least-once. See [docs/adr](docs/adr).
+**Week 1** is the job API. It submits, reads, lists, and cancels work. It does not run jobs. Delivery, once workers exist, is at-least-once. See [docs/architecture.md](docs/architecture.md) and [docs/adr](docs/adr).
 
 Portfolio: [brohammad.tech](https://brohammad.tech/#projects)
 
@@ -20,7 +20,7 @@ Workers, claiming, heartbeats, crash recovery, retries, dead-letter replay, cron
 
 ## Run
 
-Requires Go 1.26 and Docker.
+Requires Go 1.26 and Docker. Copy [.env.example](.env.example) if you want a local env template.
 
 ```bash
 make up
