@@ -1,4 +1,7 @@
-.PHONY: up migrate run test
+.PHONY: up migrate run test build
+
+build:
+	go build -o bin/arden ./cmd/arden
 
 DATABASE_URL ?= postgres://arden:arden@localhost:5432/arden?sslmode=disable
 export DATABASE_URL
