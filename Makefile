@@ -1,4 +1,7 @@
-.PHONY: up migrate run test build
+.PHONY: help up migrate run test build
+
+help:
+	@echo "Targets: up migrate run test build"
 
 build:
 	go build -o bin/arden ./cmd/arden
