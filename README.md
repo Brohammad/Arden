@@ -2,7 +2,7 @@
 
 Distributed job scheduler and execution engine. Postgres is the source of truth and the coordination mechanism: jobs are claimed with row locks, owned with a lease, and protected with a fencing token.
 
-**Week 1** is the job API. It submits, reads, lists, and cancels work. It does not run jobs. Delivery, once workers exist, is at-least-once. See [docs/architecture.md](docs/architecture.md) and [docs/adr](docs/adr).
+**Week 1** is the job API. It submits, reads, lists, and cancels work. It does not run jobs. Delivery, once workers exist, is at-least-once. See [docs/architecture.md](docs/architecture.md), [docs/adr](docs/adr), and [docs/roadmap.md](docs/roadmap.md).
 
 Portfolio: [brohammad.tech](https://brohammad.tech/#projects)
 
